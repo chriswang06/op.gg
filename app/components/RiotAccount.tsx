@@ -43,7 +43,7 @@ export default function RiotAccount({gameName, tagLine} : Props) {
     const puuid = accountData ? accountData.puuid : null;
     return(
         <div>
-        {JSON.stringify(accountData, null, 2)}
+        {/* {JSON.stringify(accountData, null, 2)} */}
             <h1>PUUID !!!</h1>
             {puuid}
             </div>
