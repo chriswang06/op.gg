@@ -44,8 +44,10 @@ export default function RiotAccount({gameName, tagLine} : Props) {
     return(
         <div>
         {/* {JSON.stringify(accountData, null, 2)} */}
-            <h1>PUUID !!!</h1>
-            {puuid}
-            </div>
+            {puuid ? <div>
+                Puuid:  {puuid} 
+                </div>
+                : <p>Please Enter a Username</p>}
+        </div>
     );
 }
