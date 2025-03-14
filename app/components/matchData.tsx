@@ -1,14 +1,16 @@
 import {useEffect, useState} from 'react';
 import MatchCard from "./MatchCard";
-import * as match from "../interfaces/matchTypes";
-import { fetchMatchData } from './fetchData';
+import * as match from "../dataTypes/matchTypes";
+import { fetchMatchData } from '../lib/fetchData';
 
 
 interface MatchDataProps{
     matchIds : string[];
+    puuid : string;
 }
 
 function MatchData(props: MatchDataProps){
+    const temp_puuid = props.puuid;
     console.log("props: ");
     console.log(props.matchIds);
     const [matchesData, setMatchesData] = useState<match.MatchDto[] | null>(null);
@@ -55,7 +57,7 @@ function MatchData(props: MatchDataProps){
     console.log(matchesData);
     return (<div>
             {matchesData.map((matchData, index) => (
-                <MatchCard key = {index} match = {matchData}/>
+                <MatchCard key = {index} match = {matchData} puuid = {temp_puuid}/>
             ))}
             </div>
     );

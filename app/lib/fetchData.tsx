@@ -1,4 +1,4 @@
-import * as match from "../interfaces/matchTypes";
+import * as match from "../dataTypes/matchTypes";
 
 export async function fetchMatchData(matchId : string): Promise<match.MatchDto | null> {
     try {

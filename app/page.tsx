@@ -1,11 +1,11 @@
 'use client'
-import {fetchPuuid, fetchMatches, fetchMatchData} from "./components/fetchData";
+import {fetchPuuid, fetchMatches, fetchMatchData} from "./lib/fetchData";
 import RiotAccount from "./components/RiotAccount";
-import Matches from "./components/matches";
+import Matches from "./lib/matches";
 import { Button, TextInput } from '@mantine/core';
 import { useState } from 'react';
 import MatchCard from './components/MatchCard';
-import * as match from "./interfaces/matchTypes";
+import * as match from "./dataTypes/matchTypes";
 import MatchData from "./components/matchData";
 
 export default function Home(){
@@ -15,7 +15,13 @@ export default function Home(){
   const [puuid, setPuuid] = useState("");
   const [matches, setMatches] = useState<string[]>([]);
 
+  const [submittedName, setSubmittedName] = useState('');
+  const [submittedTag, setSubmittedTag] = useState('');
+
   const handlePuuidChange = async () => {
+    setSubmittedName(nameValue);
+    setSubmittedTag(tagValue)
+
     const fetchedPuuid = await fetchPuuid(nameValue, tagValue);
     setPuuid(fetchedPuuid);
 
@@ -47,9 +53,9 @@ export default function Home(){
         Search Games
       </Button>
 
-      <RiotAccount gameName = {nameValue} tagLine = {tagValue}></RiotAccount>
-      {puuid == ""?<div></div> :<Matches puuid = {puuid}></Matches>}
-      <MatchData matchIds = {matches}></MatchData>
+      {/* <RiotAccount gameName = {submittedName} tagLine = {submittedTag}></RiotAccount> */}
+      {/* {puuid == ""?<div></div> :<Matches puuid = {puuid}></Matches>} */}
+      <MatchData matchIds = {matches} puuid = {puuid}></MatchData>
 
     </div>
 
